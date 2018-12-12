@@ -8,8 +8,12 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1544576191649_4019';
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = ['invalidArg', 'iisError'];
 
+  const invalidArg = {}
+  const iisError = {}
+
+  // sequelize设置
   config.sequelize = {
     dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
     database: 'typescript',
@@ -26,6 +30,7 @@ export default (appInfo: EggAppInfo) => {
     }
   };
 
+  // 跨域请求设置
   config.cors = {
     origin: function () {
       return '*'
@@ -46,5 +51,7 @@ export default (appInfo: EggAppInfo) => {
   return {
     ...config,
     ...bizConfig,
+    ...invalidArg,
+    ...iisError
   };
 };
