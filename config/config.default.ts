@@ -41,6 +41,13 @@ export default (appInfo: EggAppInfo) => {
     allowMethods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
     allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Token']
   }
+  // 请求地址
+  const cluster = {
+    listen: {
+      port: 7001,
+      hostname: '127.0.0.1'
+    }
+  }
 
   const domain: string = 'http://103.38.233.24:8084'
   // 精选案例
@@ -62,6 +69,7 @@ export default (appInfo: EggAppInfo) => {
     ...config,
     ...invalidArg,
     ...iisError,
+    ...cluster,
     caseRecommendCover,
     caseCover,
     caseMDImage,
