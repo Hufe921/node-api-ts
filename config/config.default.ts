@@ -11,12 +11,31 @@ export default (appInfo: EggAppInfo) => {
   config.middleware = [];
 
   config.sequelize = {
-    "username": "root",
-    "password": "root",
-    "database": "typescript",
-    "host": "localhost",
-    "dialect": "mysql"
+    dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
+    database: 'typescript',
+    host: 'localhost',
+    port: 3306,
+    username: 'root',
+    password: 'root',
+    // delegate: 'myModel', // load all models to `app[delegate]` and `ctx[delegate]`, default to `model`
+    // baseDir: 'my_model', // load all files in `app/${baseDir}` as models, default to `model`
+    // exclude: 'index.js', // ignore `app/${baseDir}/index.js` when load models, support glob and array
+    // more sequelize options
+    define: {
+      underscored: false
+    }
   };
+
+  config.cors = {
+    origin: function () {
+      return '*'
+    },
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+    maxAge: 5,
+    credentials: true,
+    allowMethods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Token']
+  }
 
   // add your special config in here
   const bizConfig = {
