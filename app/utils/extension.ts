@@ -5,7 +5,7 @@
  * @param {Object} O 目标对象不存在，但需要从源数据提取的属性
  * @returns {Object}  新对象
  */
-function cloneTo<G>(F: object, T: { new(): G }, O: object): G {
+function cloneTo<G>(F: object, T: { new(...arg: any): G }, O: object): any {
     let t: G = new T()
     for (let i in F) {
         if (t.hasOwnProperty(i)) {

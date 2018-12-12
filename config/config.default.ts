@@ -42,16 +42,35 @@ export default (appInfo: EggAppInfo) => {
     allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Token']
   }
 
-  // add your special config in here
-  const bizConfig = {
-    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
-  };
+  const domain: string = 'http://103.38.233.24:8084'
+  // 精选案例
+  const caseRecommendCover: string = domain + '/case/recommend/'
+  const caseCover: string = domain + '/case/cover/'
+  const caseMDImage: string = domain + '/case/md_img/'
+  const caseAttachment: string = domain + '/case/attachment/'
+  // 下载专区
+  const downloadCover: string = domain + '/download/cover/'
+  const downloadMDImage: string = domain + '/download/md_img/'
+  const downloadAttachment: string = domain + '/download/attachment/'
+  // 视觉规范
+  const visualCover: string = domain + '/visual/cover/'
+  const visualMDImage: string = domain + '/visual/md_img/'
+  const visualAttachment: string = domain + '/visual/attachment/'
 
   // the return config will combines to EggAppConfig
   return {
     ...config,
-    ...bizConfig,
     ...invalidArg,
-    ...iisError
+    ...iisError,
+    caseRecommendCover,
+    caseCover,
+    caseMDImage,
+    caseAttachment,
+    downloadCover,
+    downloadMDImage,
+    downloadAttachment,
+    visualCover,
+    visualMDImage,
+    visualAttachment
   };
 };
