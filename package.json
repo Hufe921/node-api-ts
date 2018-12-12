@@ -18,7 +18,13 @@
     "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
     "lint": "tslint --project . -c tslint.json",
-    "clean": "ets clean"
+    "clean": "ets clean",
+    "db-create": "node_modules/.bin/sequelize db:create",
+    "db-undo": "node_modules/.bin/sequelize db:migrate:undo",
+    "db-migration": "node_modules/.bin/sequelize db:migrate",
+    "db-seed": "node_modules/.bin/sequelize db:seed:all",
+    "db-simple1": "node_modules/.bin/sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string",
+    "db-simple2": "node_modules/.bin/sequelize migration:create --name add-testcolumn-to-todo"
   },
   "dependencies": {
     "egg": "^2.6.1",
@@ -30,10 +36,13 @@
     "@types/supertest": "^2.0.0",
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
-    "egg-ci": "^1.8.0",
     "egg-bin": "^4.6.2",
+    "egg-ci": "^1.8.0",
     "egg-mock": "^3.16.0",
+    "egg-sequelize": "^4.2.0",
     "egg-ts-helper": "^1.11.0",
+    "mysql2": "^1.6.4",
+    "sequelize-cli": "^5.4.0",
     "tslib": "^1.9.0",
     "tslint": "^4.0.0",
     "typescript": "^3.0.0"
