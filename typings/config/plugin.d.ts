@@ -4,3 +4,4 @@
 import 'egg';
 import 'egg-sequelize';
 import 'egg-cors';
+import 'egg-validate';
