@@ -5,6 +5,7 @@ coverage/
 .idea/
 run/
 logs/
+app/public/img/*
 .DS_Store
 .vscode
 *.swp

@@ -39,13 +39,30 @@ export default (appInfo: EggAppInfo) => {
     maxAge: 5,
     credentials: true,
     allowMethods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-    allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Token']
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Token', 'WN-HttpRequest']
   }
   // 请求地址
   const cluster = {
     listen: {
       port: 7001,
       hostname: '127.0.0.1'
+    }
+  }
+  // 文件大小
+  const multipart = {
+    mode: 'file',
+    fileSize: '5mb',
+    whitelist: [
+      '.png',
+      '.jpg',
+      '.jpeg'
+    ]
+  }
+
+  // 安全设置
+  const security = {
+    csrf: {
+      enable: false
     }
   }
 
@@ -70,6 +87,8 @@ export default (appInfo: EggAppInfo) => {
     ...invalidArg,
     ...iisError,
     ...cluster,
+    ...multipart,
+    security,
     caseRecommendCover,
     caseCover,
     caseMDImage,

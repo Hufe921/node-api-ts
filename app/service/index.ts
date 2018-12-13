@@ -23,7 +23,7 @@ export default class Index extends Service {
   // 获取我的提交历史
   public async getSubmitHistory(msg: { userNo: string }): Promise<object> {
     // 通用方法
-    async function getMyWork(T: any, cover: string, workType: number): Promise<Object> {
+    async function getMyWork(T: any, cover: string, workType: number): Promise<object> {
       const raw: Array<any> = await T.findAll({
         where: {
           isLatestVersion: true,
