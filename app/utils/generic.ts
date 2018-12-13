@@ -5,7 +5,7 @@
  * @returns {Array} [boolean,id]
  */
 
-async function isExit(T: object | any, condition: object): Promise<[boolean, string?]> {
+async function isExit(T: any, condition: object): Promise<[boolean, string?]> {
     let isExit: any = await T.find({
         where: condition
     })
